@@ -3,34 +3,44 @@ package com.example.employee.entity;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="employee")
 public class Employee {
+    @Id
+    private Integer id;
+
+    @Column(nullable = false)
+    private String name;
+
+    @Column(nullable = false)
+    private Integer age;
 
     @Column
-    String name;
-    @Column
-    int age;
-    @Column
-    String gender;
-    @Column
-    int salary;
-    @Column
-    int companyId;
-    @Id
-    int id;
+    private String gender;
+
+    @Column(nullable = false)
+    private Integer companyId;
+
+    @Column(nullable = false)
+    private Integer salary;
 
     public Employee() {
     }
 
-    public Employee(String name, int age, String gender, int salary, int companyId, int id) {
+    public Employee(Integer id, String name, Integer age, String gender, Integer companyId, Integer salary) {
+        this.id = id;
         this.name = name;
         this.age = age;
         this.gender = gender;
-        this.salary = salary;
         this.companyId = companyId;
+        this.salary = salary;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
         this.id = id;
     }
 
@@ -38,46 +48,40 @@ public class Employee {
         return name;
     }
 
-    public int getAge() {
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public Integer getAge() {
         return age;
+    }
+
+    public void setAge(Integer age) {
+        this.age = age;
     }
 
     public String getGender() {
         return gender;
     }
 
-    public int getSalary() {
-        return salary;
-    }
-
-    public int getCompanyId() {
-        return companyId;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setAge(int age) {
-        this.age = age;
-    }
-
     public void setGender(String gender) {
         this.gender = gender;
     }
 
-    public void setSalary(int salary) {
-        this.salary = salary;
+    public Integer getCompanyId() {
+        return companyId;
     }
 
-    public void setCompanyId(int companyId) {
+    public void setCompanyId(Integer companyId) {
         this.companyId = companyId;
     }
-    public void setId(int id) {
-        this.id = id;
+
+    public Integer getSalary() {
+        return salary;
+    }
+
+    public void setSalary(Integer salary) {
+        this.salary = salary;
     }
 }
+

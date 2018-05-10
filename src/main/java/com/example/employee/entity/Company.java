@@ -1,55 +1,50 @@
 package com.example.employee.entity;
 
-
-
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name="company")
 public class Company {
     @Id
-    int id;
-    @Column
-    String companyName;
-    @Column
-    int employeesNumber;
+    private Integer id;
+
+    @Column(nullable = false)
+    private String companyName;
+
+    @Column(nullable = false)
+    private Integer employeesNumber;
 
     public Company() {
     }
 
-    public Company(int id, String companyName, int employeesNumber) {
+    public Company(Integer id, String companyName, Integer employeesNumber) {
         this.id = id;
         this.companyName = companyName;
         this.employeesNumber = employeesNumber;
     }
 
-
-    public int getId() {
+    public Integer getId() {
         return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getCompanyName() {
         return companyName;
     }
 
-    public int getEmployeesNumber() {
-        return employeesNumber;
-    }
-
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
     public void setCompanyName(String companyName) {
         this.companyName = companyName;
     }
 
-    public void setEmployeesNumber(int employeesNumber) {
+    public Integer getEmployeesNumber() {
+        return employeesNumber;
+    }
+
+    public void setEmployeesNumber(Integer employeesNumber) {
         this.employeesNumber = employeesNumber;
     }
 }
