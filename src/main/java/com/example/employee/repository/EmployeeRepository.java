@@ -14,17 +14,12 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     //以下所有的*都代表变量
 
     //1.查询名字是*的第一个employee
-    Employee findTopByName(String name);
-    //方法二
-    Employee queryFirstByName(String name);
-    //方法三
+
     Employee findFirstByName(String name);
 
     //2.找出Employee表中第一个姓名包含`*`字符并且薪资大于*的雇员个人信息
     Employee findFirstByNameContainingAndSalaryGreaterThan(String nameContains,Integer salary);
-    //方法二：测试自定义SQL查询
-    @Query(value = "select * from Employee t where t.name like %?1% and t.salary > ?2 limit 1", nativeQuery = true)
-    Employee findUserByNameCharacterAndSalary(String nameContains,Integer salary);
+
 
     //3.找出一个薪资最高且公司ID是*的雇员以及该雇员的姓名
     @Query(value = "SELECT * FROM Employee t WHERE t.companyId =:companyId ORDER BY salary DESC limit 1", nativeQuery = true)
@@ -40,10 +35,10 @@ public interface EmployeeRepository extends JpaRepository<Employee, Long> {
     //6.将*的名字改成*,输出这次修改影响的行数
     @Modifying
     @Query("update Employee u set u.name = ?1 where u.name = ?2")
-    int modifyByIName(String newName, String name);
+    int updateName(String newName, String name);
 
     //7.删除姓名是*的employee
-    @Modifying
-    @Query("delete from Employee where name = ?1")
+//    @Modifying
+//    @Query("delete from Employee where name = ?1")
     void deleteByName(String name);
 }
