@@ -36,7 +36,7 @@ public class EmployeeJPATest {
     public void should_return_employee_when_input_employee_name() throws Exception {
         //1.查询名字是小红的employee
         String actualName = "xiaohong";
-        Employee expectedEmployee = employeeRepository.findFirstByName(actualName);
+        Employee expectedEmployee = employeeRepository.findByName(actualName);
         assertThat(actualName).isEqualTo(expectedEmployee.getName());
     }
 
@@ -83,7 +83,7 @@ public class EmployeeJPATest {
     public void should_deleted_employee_when_given_employee_name() throws Exception {
         //7.删除姓名是xiaohong的employee
         employeeRepository.deleteByName("xiaohong");
-        Employee actualEmployee = employeeRepository.findFirstByName("xiaohong");
+        Employee actualEmployee = employeeRepository.findByName("xiaohong");
         assertThat(actualEmployee).isNull();
     }
 }
